@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <form id="promptForm">
+    <label for="name">Please enter your name:</label>
+    <br>
+    <input type="text" id="name" placeholder="Your Name">
+    <br>
+    <input type="button" value="OK" onclick="submitForm()">
+    <input type="button" value="Cancel" onclick="cancelForm()">
+  </form>
+  <script>
+    function submitForm() {
+      var nameInput = document.getElementById("name").value;
+      google.script.run.withSuccessHandler(function() {
+        google.script.host.close();
+      }).handlePromptResponse(nameInput);
+    }
+    
+    function cancelForm() {
+      google.script.run.withSuccessHandler(function() {
+        google.script.host.close();
+      }).handlePromptResponse(null);
+    }
+  </script>
+</body>
+</html>

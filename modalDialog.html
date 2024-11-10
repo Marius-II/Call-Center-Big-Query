@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Information</h2>
+    <p><strong>Phone number:</strong> <span id="phone"></span></p>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Location:</strong> <span id="location"></span></p>
+
+    <label for="deleteReason">Delete Reason:</label>
+    <input type="text" id="deleteReason" placeholder="Enter delete reason">
+    <br><br>
+    <input type="button" value="Submit" onclick="logDeleteReason()">
+  </div>
+
+  <script>
+    // Function to set the content of the modal
+    function setModalContent(phone, name, location) {
+      document.getElementById("phone").innerText = phone;
+      document.getElementById("name").innerText = name;
+      document.getElementById("location").innerText = location;
+    }
+
+    // Function to log the delete reason
+    function logDeleteReason() {
+      var deleteReason = document.getElementById("deleteReason").value;
+      google.script.run.processDeleteReason(deleteReason);
+      google.script.host.close();
+    }
+  </script>
+</body>
+</html>
